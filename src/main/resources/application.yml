@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ehub
+  profiles:
+    active: @spring.profiles.active@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  file:
+    name: logs/application.txt
+  level:
+    root: INFO
+    web: INFO
+    org:
+      springframework: DEBUG

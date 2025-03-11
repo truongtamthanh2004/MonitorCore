@@ -1,0 +1,41 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  devtools:
+    add-properties: true
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5439}/postgres
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:password}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  sendgrid:
+    api-key: ${SENDGRID_API_KEY:DUMMY-SENDGRID-API-KEY}
+    from-email: ${SENDGRID_FROM_EMAIL:truongtamthanh2004@gmail.com}
+    templateId: ${SENDGRID_TEMPLATE_ID:d-845bf6fe62fb458fbfe553c7fba22e14}
+    verificationLink: ${SENDGRID_VERIFICATION_LINK:http://localhost:8080/api/v1/users/confirm-email}
+
+# application-dev.yml
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+openapi:
+  service:
+    api-docs: backend-service
+    server: ${BACKEND_HOST:http://localhost:${server.port}}
+    title: Backend service
+    version: 1.0.0
+
+jwt:
+  expiryMinutes: ${JWT_EXPIRY_MINUTES:60}
+  expiryDay: ${JWT_EXPIRY_DAY:14}
+  accessKey: ${JWT_ACCESS_KEY:IIwLeRIVsznVTPFEYmA6HiVVBrlKkKqC36OpWzqw8mk=}
+  refreshKey: ${JWT_REFRESH_KEY:tvszknimPZQEdy3c9TCERBLAkOyoCc2ZvOmGcHsRJgg=}
